@@ -8,7 +8,7 @@ javascript util tools v0.1
 3、任何事件处理程序都应该处理事件，然后将处理结果转交给应用逻辑
 
 1、原生JavaScript实现字符串长度截取
-
+```javascript  
 function cutstr(str, len) {
     var temp;
     var icount = 0;
@@ -29,9 +29,9 @@ function cutstr(str, len) {
     }
     return strre + "..."
 }
-
+``` 
 2、原生JavaScript获取域名主机
-
+```
 function getHost(url) {
     var host = "null";
     if(typeof url == "undefined"|| null == url) {
@@ -44,31 +44,34 @@ function getHost(url) {
     }
     return host;
 }
-
+```
 3、原生JavaScript清除空格
-
+```
 String.prototype.trim = function() {
     var reExtraSpace = /^\s*(.*?)\s+$/;
     return this.replace(reExtraSpace, "$1")
 }
-
+```
 4、原生JavaScript替换全部
+```
 String.prototype.replaceAll = function(s1, s2) {
     return this.replace(new RegExp(s1, "gm"), s2);
 }
-
+```
 5、原生JavaScript转义html标签
+```
 function HtmlEncode(text) {
     return text.replace(/&/g, '&amp').replace(/\"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
-
+```
 6、原生JavaScript还原html标签
-
+```
 function HtmlDecode(text) {
     return text.replace(/&amp;/g, '&').replace(/&quot;/g, '\"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 }
-
+```
 7、原生JavaScript时间日期格式转换
+```
 Date.prototype.Format = function(formatStr) {
     var str = formatStr;
     var Week = ['日', '一', '二', '三', '四', '五', '六'];
@@ -87,9 +90,9 @@ Date.prototype.Format = function(formatStr) {
     str = str.replace(/s|S/g, this.getSeconds());
     return str;
 }
-
+```
 8、原生JavaScript判断是否为数字类型
-
+```
 function isDigit(value) {
     var patrn = /^[0-9]*$/;
     if (patrn.exec(value) == null || value == "") {
@@ -98,7 +101,7 @@ function isDigit(value) {
         return true;
     }
 }
-
+```
 9、原生JavaScript设置cookie值
 
 function setCookie(name, value, Hours) {
