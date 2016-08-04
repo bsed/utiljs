@@ -29,7 +29,7 @@ function cutstr(str, len) {
     }
     return strre + "..."
 }
-``` 
+```   
 2、原生JavaScript获取域名主机
 ```javascript
 function getHost(url) {
