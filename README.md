@@ -3,9 +3,9 @@ javascript util tools v0.1
 
 **要牢记的应用和业务逻辑之间松散耦合的几条原则：**
 
-1、勿将event对象传给其他方法，只传来自event对象中所需的数据
-2、任何可以在应用层面的动作都应该可以在不执行任何事件处理程序的情况下进行
-3、任何事件处理程序都应该处理事件，然后将处理结果转交给应用逻辑
+1、勿将event对象传给其他方法，只传来自event对象中所需的数据  
+2、任何可以在应用层面的动作都应该可以在不执行任何事件处理程序的情况下进行  
+3、任何事件处理程序都应该处理事件，然后将处理结果转交给应用逻辑  
 
 1、原生JavaScript实现字符串长度截取
 ```javascript  
@@ -31,7 +31,7 @@ function cutstr(str, len) {
 }
 ``` 
 2、原生JavaScript获取域名主机
-```
+```javascript
 function getHost(url) {
     var host = "null";
     if(typeof url == "undefined"|| null == url) {
@@ -46,32 +46,32 @@ function getHost(url) {
 }
 ```
 3、原生JavaScript清除空格
-```
+```javascript
 String.prototype.trim = function() {
     var reExtraSpace = /^\s*(.*?)\s+$/;
     return this.replace(reExtraSpace, "$1")
 }
 ```
 4、原生JavaScript替换全部
-```
+```javascript
 String.prototype.replaceAll = function(s1, s2) {
     return this.replace(new RegExp(s1, "gm"), s2);
 }
 ```
 5、原生JavaScript转义html标签
-```
+```javascript  
 function HtmlEncode(text) {
     return text.replace(/&/g, '&amp').replace(/\"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 ```
 6、原生JavaScript还原html标签
-```
+```javascript  
 function HtmlDecode(text) {
     return text.replace(/&amp;/g, '&').replace(/&quot;/g, '\"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 }
 ```
 7、原生JavaScript时间日期格式转换
-```
+```javascript  
 Date.prototype.Format = function(formatStr) {
     var str = formatStr;
     var Week = ['日', '一', '二', '三', '四', '五', '六'];
@@ -92,7 +92,7 @@ Date.prototype.Format = function(formatStr) {
 }
 ```
 8、原生JavaScript判断是否为数字类型
-```
+```javascript  
 function isDigit(value) {
     var patrn = /^[0-9]*$/;
     if (patrn.exec(value) == null || value == "") {
@@ -103,7 +103,7 @@ function isDigit(value) {
 }
 ```
 9、原生JavaScript设置cookie值
-
+```javascript  
 function setCookie(name, value, Hours) {
     var d = new Date();
     var offset = 8;
@@ -113,18 +113,18 @@ function setCookie(name, value, Hours) {
     exp.setTime(exp.getTime() + Hours * 60 * 60 * 1000);
     document.cookie = name + "=" + escape(value) + ";path=/;expires=" + exp.toGMTString() + ";domain=360doc.com;"
 }
-
+```
 10、原生JavaScript获取cookie值
-
+```javascript  
 function getCookie(name) {
     var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null) return unescape(arr[2]){
     	return null;
 		}
 	}
-
+```
 11、原生JavaScript加入收藏夹
-
+```javascript  
 function AddFavorite(sURL, sTitle) {
     try {
         window.external.addFavorite(sURL, sTitle);
@@ -136,11 +136,10 @@ function AddFavorite(sURL, sTitle) {
         }
     }
 }
-
-
+```
 
 12、原生JavaScript设为首页
-
+```javascript  
 function setHomepage() {
     if (document.all) {
         document.body.style.behavior = 'url(#default#homepage)';
@@ -157,10 +156,10 @@ function setHomepage() {
         prefs.setCharPref('browser.startup.homepage', 'http://www.jq-school.com');
     }
 }
-
+```
 
 13、原生JavaScript判断IE6
-
+```javascript  
 var ua = navigator.userAgent.toLowerCase();
 var isIE6 = ua.indexOf("msie 6") > -1;
 if (isIE6) {
@@ -168,9 +167,9 @@ if (isIE6) {
         document.execCommand("BackgroundImageCache", false, true)
     } catch(e) {}
 }
-
+```
 14、原生JavaScript加载样式文件
-
+```javascript  
 function LoadStyle(url) {
     try {
         document.createStyleSheet(url);
@@ -183,9 +182,9 @@ function LoadStyle(url) {
         head.appendChild(cssLink)
     }
 }
-
+```
 15、原生JavaScript返回脚本内容
-
+```javascript  
 function evalscript(s) {
     if(s.indexOf('<script') == -1) return s;
     var p = /<script[^\>]*?>([^\x00]*?)<\/script>/ig;
@@ -204,15 +203,15 @@ function evalscript(s) {
     }
     return s;
 }
-
+```
 16、原生JavaScript清除脚本内容
-
+```javascript  
 function stripscript(s) {
     return s.replace(/<script.*?>.*?<\/script>/ig, '');
 }
-
+```
 17、原生JavaScript动态加载脚本文件
-
+```javascript  
 function appendscript(src, text, reload, charset) {
     var id = hash(src + text);
     if(!reload && in_array(id, evalscripts)) return;
@@ -245,15 +244,15 @@ function appendscript(src, text, reload, charset) {
     } catch(e) {
 	}
 }
-
+```
 18、原生JavaScript返回按ID检索的元素对象
-
+```javascript  
 function $(id) {
     return !id ? null : document.getElementById(id);
 }
-
+```
 19、原生JavaScript返回浏览器版本内容
-
+```javascript  
 function browserVersion(types) {
     var other = 1;
     for(i in types) {
@@ -270,10 +269,11 @@ function browserVersion(types) {
     }
     BROWSER.other = other;
 }
-
+```
 
 20、原生JavaScript元素显示的通用方法
 
+```javascript  
 function $(id) {
     return !id ? null : document.getElementById(id);
 }
@@ -285,9 +285,10 @@ function display(id) {
         obj.style.display = obj.style.display == '' ? 'none' : '';
     }
 }
-
+```
 21、原生JavaScript中有insertBefore方法,可惜却没有insertAfter方法?用如下函数实现
 
+```javascript  
 function insertAfter(newChild,refChild){
     var parElem=refChild.parentNode;
     if(parElem.lastChild==refChild){
@@ -296,9 +297,9 @@ function insertAfter(newChild,refChild){
         parElem.insertBefore(newChild,refChild.nextSibling);
     }
 }
-
+```
 22、原生JavaScript中兼容浏览器绑定元素事件
-
+```javascript  
 function addEventSamp(obj,evt,fn){
     if (obj.addEventListener) {
         obj.addEventListener(evt, fn, false);
@@ -306,9 +307,9 @@ function addEventSamp(obj,evt,fn){
         obj.attachEvent('on'+evt,fn);
     }
 }
-
+```
 23、原生JavaScript光标停在文字的后面，文本框获得焦点时调用
-
+```javascript
 function focusLast(){
     var e = event.srcElement;
     var r =e.createTextRange();
@@ -316,9 +317,9 @@ function focusLast(){
     r.collapse(true);
     r.select();
 }
-
+```
 24、原生JavaScript检验URL链接是否有效
-
+```javascript
 function getUrlState(URL){
     var xmlhttp = new ActiveXObject("microsoft.xmlhttp");
     xmlhttp.Open("GET",URL, false); 
@@ -338,9 +339,9 @@ function getUrlState(URL){
         }
     }
 }
-
+```
 25、原生JavaScript格式化CSS样式代码
-
+```javascript
 function formatCss(s){//格式化代码
     s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
     s = s.replace(/;\s*;/g, ";"); //清除连续分号
@@ -350,9 +351,9 @@ function formatCss(s){//格式化代码
     s = s.replace(/([^\s]);([^\s\}])/g, "$1;\n\t$2");
     return s;
 }
-
+```
 26、原生JavaScript压缩CSS样式代码
-
+```javascript  
 function yasuoCss (s) {//压缩代码
     s = s.replace(/\/\*(.|\n)*?\*\//g, ""); //删除注释
     s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
@@ -361,18 +362,18 @@ function yasuoCss (s) {//压缩代码
     s = s.match(/^\s*(\S+(\s+\S+)*)\s*$/); //去掉首尾空白
     return (s == null) ? "" : s[1];
 }
-
+```
 27、原生JavaScript获取当前路径
-
+```javascript  
 var currentPageUrl = "";
 if (typeof this.href === "undefined") {
     currentPageUrl = document.location.toString().toLowerCase();
 }else {
     currentPageUrl = this.href.toString().toLowerCase();
 }
-
+```
 28、原生JavaScriptIP转成整型
-
+```javascript  
 function _ip2int(ip){
     var num = 0;
     ip = ip.split(".");
@@ -380,9 +381,9 @@ function _ip2int(ip){
     num = num >>> 0;
     return num;
 }
-
+```
 29、原生JavaScript整型解析为IP地址
-
+```javascript  
 function _int2iP(num){
     var str;
     var tt = new Array();
@@ -393,9 +394,9 @@ function _int2iP(num){
     str = String(tt[0]) + "." + String(tt[1]) + "." + String(tt[2]) + "." + String(tt[3]);
     return str;
 }
-
+```
 30、原生JavaScript实现checkbox全选与全不选
-
+```javascript
 function checkAll() {
     var selectall = document.getElementById("selectall");
     var allbox = document.getElementsByName("allbox");
@@ -409,10 +410,10 @@ function checkAll() {
         }
     }
 }
-
+```
 
 31、原生JavaScript判断是否移动设备
-
+```javascript  
 function isMobile(){
     if (typeof this._isMobile === 'boolean'){
         return this._isMobile;
@@ -430,29 +431,33 @@ function isMobile(){
     this._isMobile = isMobileScreenSize && this.isTouchScreen();
     return this._isMobile;
 }
-
+```
 32、原生JavaScript判断是否移动设备访问
+```javascript
 function isMobileUserAgent(){
     return (/iphone|ipod|android.*mobile|windows.*phone|blackberry.*mobile/i.test(window.navigator.userAgent.toLowerCase()));
 }
-
+```
 33、原生JavaScript判断是否苹果移动设备访问
+```javascript
 function isAppleMobileDevice(){
     return (/iphone|ipod|ipad|Macintosh/i.test(navigator.userAgent.toLowerCase()));
 }
-
+```
 34、原生JavaScript判断是否安卓移动设备访问
+```javascript
 function isAndroidMobileDevice(){
     return (/android/i.test(navigator.userAgent.toLowerCase()));
 }
-
+```
 35、原生JavaScript判断是否Touch屏幕
+```javascript
 function isTouchScreen(){
     return (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
 }
-
+```
 36、原生JavaScript判断是否在安卓上的谷歌浏览器
-
+```javascript
 function isNewChromeOnAndroid(){
     if(this.isAndroidMobileDevice()){
         var userAgent = navigator.userAgent.toLowerCase();
@@ -468,13 +473,15 @@ function isNewChromeOnAndroid(){
     }
     return false;
 }
-
+```
 37、原生JavaScript判断是否打开视窗
+```javascript
 function isViewportOpen() {
     return !!document.getElementById('wixMobileViewport');
 }
-
+```
 38、原生JavaScript获取移动设备初始化大小
+```javascript  
 function getInitZoom(){
     if(!this._initZoom){
         var screenWidth = Math.min(screen.height, screen.width);
@@ -485,9 +492,9 @@ function getInitZoom(){
     }
     return this._initZoom;
 }
-
+```
 39、原生JavaScript获取移动设备最大化大小
-
+```javascript
 function getZoom(){
     var screenWidth = (Math.abs(window.orientation) === 90) ? Math.max(screen.height, screen.width) : Math.min(screen.height, screen.width);
     if(this.isAndroidMobileDevice() && !this.isNewChromeOnAndroid()){
@@ -501,9 +508,9 @@ function getZoom(){
         return screenWidth / document.body.offsetWidth;
     }
 }
-
+```
 40、原生JavaScript获取移动设备屏幕宽度
-
+```javascript
 function getScreenWidth(){
     var smallerSide = Math.min(screen.width, screen.height);
     var fixViewPortsExperiment = rendererModel.runningExperiments.FixViewport || rendererModel.runningExperiments.fixviewport;
@@ -515,8 +522,9 @@ function getScreenWidth(){
     }
     return smallerSide;
 }
+```
 41、原生JavaScript完美判断是否为网址
-
+```javascript
 function IsURL(strUrl) {
     var regular = /^\b(((https?|ftp):\/\/)?[-a-z0-9]+(\.[-a-z0-9]+)*\.(?:com|edu|gov|int|mil|net|org|biz|info|name|museum|asia|coop|aero|[a-z][a-z]|((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d))\b(\/[-a-z0-9_:\@&?=+,.!\/~%\$]*)?)$/i
     if (regular.test(strUrl)) {
@@ -526,9 +534,9 @@ function IsURL(strUrl) {
         return false;
     }
 }
-
+```
 42、原生JavaScript根据样式名称检索元素对象
-
+```javascript
 function getElementsByClassName(name) {
     var tags = document.getElementsByTagName('*') || document.all;
     var els = [];
@@ -545,22 +553,22 @@ function getElementsByClassName(name) {
     }
     return els;
 }
-
+```
 43、原生JavaScript判断是否以某个字符串开头
-
+```javascript
 String.prototype.startWith = function (s) {
     return this.indexOf(s) == 0;
 }
-
+```
 44、原生JavaScript判断是否以某个字符串结束
-
+```javascript
 String.prototype.endWith = function (s) {
     var d = this.length - s.length;
     return (d >= 0 && this.lastIndexOf(s) == d);
 }
-
+```
 45、原生JavaScript返回IE浏览器的版本号
-
+```javascript
 function getIE(){
     if (window.ActiveXObject){
         var v = navigator.userAgent.match(/MSIE ([^;]+)/)[1];
@@ -568,49 +576,51 @@ function getIE(){
     }
     return false;
 }
-
+```
 46、原生JavaScript获取页面高度
-
+```javascript
 function getPageHeight(){
     var g = document, a = g.body, f = g.documentElement, d = g.compatMode == "BackCompat" ? a : g.documentElement;
     return Math.max(f.scrollHeight, a.scrollHeight, d.clientHeight);
 }
-
+```
 47、原生JavaScript获取页面scrollLeft
+```javascript
 function getPageScrollLeft(){
     var a = document;
     return a.documentElement.scrollLeft || a.body.scrollLeft;
 }
-
+```
 48、原生JavaScript获取页面可视宽度
-
+```javascript
 function getPageViewWidth(){
     var d = document, a = d.compatMode == "BackCompat" ? d.body : d.documentElement;
     return a.clientWidth;
 }
-
+```
 49、原生JavaScript获取页面宽度
+```javascript
 function getPageWidth(){
     var g = document, a = g.body, f = g.documentElement, d = g.compatMode == "BackCompat" ? a : g.documentElement;
     return Math.max(f.scrollWidth, a.scrollWidth, d.clientWidth);
 }
-
+```
 50、原生JavaScript获取页面scrollTop
-
+```javascript
 function getPageScrollTop(){
     var a = document;
     return a.documentElement.scrollTop || a.body.scrollTop;
 }
-
+```
 51、原生JavaScript获取页面可视高度
-
+```javascript
 function getPageViewHeight() {
     var d = document, a = d.compatMode == "BackCompat" ? d.body : d.documentElement;
     return a.clientHeight;
 }
-
+```
 52、原生JavaScript跨浏览器添加事件
-
+```javascript
 function addEvt(oTarget,sEvtType,fnHandle){
     if(!oTarget){
     	return;
@@ -623,8 +633,9 @@ function addEvt(oTarget,sEvtType,fnHandle){
         oTarget["on" + sEvtType] = fnHandle;
     }
 }
-
+```
 53、原生JavaScript跨浏览器删除事件
+```javascript
 function delEvt(oTarget,sEvtType,fnHandle){
     if(!oTarget){
     	return;
@@ -637,8 +648,9 @@ function delEvt(oTarget,sEvtType,fnHandle){
         oTarget["on" + sEvtType] = fnHandle;
     }
 }
-
+```
 54、原生JavaScript去掉url前缀
+```javascript
 function removeUrlPrefix(a){
   a=a.replace(/：/g,":").replace(/．/g,".").replace(/／/g,"/");
   while(trim(a).toLowerCase().indexOf("http://")==0){
@@ -646,14 +658,16 @@ function removeUrlPrefix(a){
   }
   return a;
 }
-
+```
 55、原生JavaScript随机数时间戳
+```javascript
 function uniqueId(){
     var a=Math.random,b=parseInt;
     return Number(new Date()).toString()+b(10*a())+b(10*a())+b(10*a());
 }
-
+```
 56、原生JavaScript全角半角转换,iCase: 0全到半，1半到全，其他不转化
+```
 function chgCase(sStr,iCase){
     if(typeof sStr != "string" || sStr.length <= 0 || !(iCase === 0 || iCase == 1)){
         return sStr;
@@ -682,9 +696,9 @@ function chgCase(sStr,iCase){
     }      
     return oRs.join("");
 }
-
+```
 57、原生JavaScript确认是否键盘有效输入值
-
+```javascript
 function checkKey(iKey){
     if(iKey == 32 || iKey == 229){return true;}/*空格和异常*/
     if(iKey>47 && iKey < 58){return true;}/*数字*/
@@ -695,8 +709,9 @@ function checkKey(iKey){
     if(iKey>218 && iKey < 223){return true;}/*符号2*/
     return false;
 }
-
+```
 58、原生JavaScript获取网页被卷去的位置
+```javascript
 function getScrollXY() {
     return document.body.scrollTop ? {
         x: document.body.scrollLeft,
@@ -706,9 +721,9 @@ function getScrollXY() {
         y: document.documentElement.scrollTop;
     }
 }
-
+```
 59、原生JavaScript另一种正则日期格式化函数+调用方法
-
+```javascript
 Date.prototype.format = function(format){ //author: meizz
   var o = {
     "M+" : this.getMonth()+1, //month
@@ -728,9 +743,9 @@ Date.prototype.format = function(format){ //author: meizz
   return format;
 }
 alert(new Date().format("yyyy-MM-dd hh:mm:ss"));
-
+```
 60、原生JavaScript时间个性化输出功能
-
+```javascript
 /*
 1、< 60s, 显示为“刚刚”
 2、>= 1min && < 60 min, 显示与当前时间差“XX分钟前”
@@ -770,8 +785,9 @@ function timeFormat(time){
   }
   return timeStr;
 }
-
+```
 61、原生JavaScript解决offsetX兼容性问题
+```javascript
 // 针对火狐不支持offsetX/Y
 function getOffset(e){
   var target = e.target, // 当前触发的目标对象
@@ -803,8 +819,9 @@ function getPageCoord(element){
   }
   return coord;
 }
-
+```
 62、原生JavaScript常用的正则表达式
+```javascript
 //正整数
 /^[0-9]*[1-9][0-9]*$/;
 //负整数
@@ -839,8 +856,9 @@ function getPageCoord(element){
 /^\s*|\s*$/;
 //匹配HTML标记的正则表达式
 < (\S*?)[^>]*>.*?|< .*? />;
-
+```
 63、原生JavaScript实现返回顶部的通用方法
+```javascript  
 function backTop(btnId) {
     var btn = document.getElementById(btnId);
     var d = document.documentElement;
@@ -862,9 +880,9 @@ function backTop(btnId) {
     }
 };
 backTop('goTop');
-
+```
 64、原生JavaScript获得URL中GET参数值
-
+```javascript
 // 用法：如果地址是 test.htm?t1=1&t2=2&t3=3, 那么能取得：GET["t1"], GET["t2"], GET["t3"]
 function get_get(){
   querystr = window.location.href.split("?")
@@ -879,8 +897,9 @@ function get_get(){
   }
   return querystr[1];
 }
-
+```
 65、原生JavaScript实现全选通用方法
+```javascript  
 function checkall(form, prefix, checkall) {
     var checkall = checkall ? checkall : 'chkall';
     for(var i = 0; i < form.elements.length; i++) {
@@ -890,9 +909,9 @@ function checkall(form, prefix, checkall) {
         }
     }
 }
-
+```
 66、原生JavaScript实现全部取消选择通用方法
-
+```javascript
 function uncheckAll(form) {
     for (var i=0;i<form.elements.length;i++){
         var e = form.elements[i];
@@ -901,8 +920,9 @@ function uncheckAll(form) {
         }
     }
 }
-
+```
 67、原生JavaScript实现打开一个窗体通用方法
+```javascript
 function openWindow(url,windowName,width,height){
     var x = parseInt(screen.width / 2.0) - (width / 2.0);
     var y = parseInt(screen.height / 2.0) - (height / 2.0);
@@ -923,8 +943,9 @@ function openWindow(url,windowName,width,height){
         win.focus();
     }
 }
-
+```
 68、原生JavaScript判断是否为客户端设备
+```javascript
 function client(o){
        var b = navigator.userAgent.toLowerCase();
        var t = false;
@@ -939,9 +960,9 @@ function client(o){
        }
        return t;
 }
-
+```
 69、原生JavaScript获取单选按钮的值
-
+``javascript
 function get_radio_value(field){
     if(field&&field.length){
         for(var i=0;i<field.length;i++){
@@ -953,9 +974,9 @@ function get_radio_value(field){
         return ;
     }
 }
-
+```
 70、原生JavaScript获取复选框的值
-
+```javascript
 function get_checkbox_value(field){
     if(field&&field.length){
         for(var i=0;i<field.length;i++){
@@ -967,9 +988,9 @@ function get_checkbox_value(field){
         return;
     }
 }
-
+```
 71、原生JavaScript判断是否为邮箱
-
+```javascript
 function isEmail(str){
     var re=/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
     if (re.test(str) != true) {
@@ -978,8 +999,9 @@ function isEmail(str){
         return true;
     }
 }
-
+```
 72、原生JavaScript判断是否有列表中的危险字符
+```javascript
 function isValidReg(chars){
     var re=/<|>|\[|\]|\{|\}|『|』|※|○|●|◎|§|△|▲|☆|★|◇|◆|□|▼|㊣|﹋|⊕|⊙|〒|ㄅ|ㄆ|ㄇ|ㄈ|ㄉ|ㄊ|ㄋ|ㄌ|ㄍ|ㄎ|ㄏ|ㄐ|ㄑ|ㄒ|ㄓ|ㄔ|ㄕ|ㄖ|ㄗ|ㄘ|ㄙ|ㄚ|ㄛ|ㄜ|ㄝ|ㄞ|ㄟ|ㄢ|ㄣ|ㄤ|ㄥ|ㄦ|ㄧ|ㄨ|ㄩ|■|▄|▆|\*|@|#|\^|\\/;
     if (re.test( chars) == true) {
@@ -988,17 +1010,18 @@ function isValidReg(chars){
         return true;
     }
 }
-
+```
 73、原生JavaScript判断字符串是否大于规定的长度
-
+```javascript
 function isValidLength(chars, len) {
     if (chars.length < len) {
         return false;
     }
     return true;
 }
-
+```
 74、原生JavaScript判断字符串是为网址不区分大小写
+```javascript
 function isValidURL( chars ) {
     var re=/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(\S+\.\S+)$/;
     if (!isNULL(chars)) {
@@ -1011,9 +1034,9 @@ function isValidURL( chars ) {
     }
     return false;
 }
-
+```
 75、原生JavaScript判断字符串是否为小数
-
+```javascript
 function isValidDecimal( chars ) {
     var re=/^\d*\.?\d{1,2}$/;
     if (chars.match(re) == null){
@@ -1023,8 +1046,9 @@ function isValidDecimal( chars ) {
     	return true;
     }
 }
-
+```
 76、原生JavaScript判断字符串是否为整数
+```javascript
 function isNumber( chars ) {
     var re=/^\d*$/;
     if (chars.match(re) == null){
@@ -1034,9 +1058,9 @@ function isNumber( chars ) {
    	 	return true;
     }
 }
-
+```
 77、原生JavaScript判断字符串是否为浮点数
-
+```
 function isFloat( str ) {
     for(i=0;i<str.length;i++)  {
        if ((str.charAt(i)<"0" || str.charAt(i)>"9")&& str.charAt(i) != '.'){
@@ -1045,8 +1069,9 @@ function isFloat( str ) {
     }
     return true;
 }
-
+```
 78、原生JavaScript判断字符是否为A-Za-z英文字母
+```javascript
 function isLetters( str ){
     var re=/^[A-Za-z]+$/;
     if (str.match(re) == null){
@@ -1056,8 +1081,9 @@ function isLetters( str ){
     	return true;
     }
 }
-
+```
 79、原生JavaScript判断字符串是否邮政编码
+```javascript
 function isValidPost( chars ) {
     var re=/^\d{6}$/;
     if (chars.match(re) == null){
@@ -1067,9 +1093,9 @@ function isValidPost( chars ) {
     	return true;
     }
 }
-
+```
 80、原生JavaScript判断字符是否空NULL
-
+```javascript
 function isNULL( chars ) {
     if (chars == null){
     	return true;
@@ -1079,19 +1105,20 @@ function isNULL( chars ) {
     }   
     return false;
 }
-
+```
 81、原生JavaScript用正则表达式提取页面代码中所有网址
+```javascript
 var aa = document.documentElement.outerHTML.match(/(url\(|src=|href=)[\"\']*([^\"\'\(\)\<\>\[\] ]+)[\"\'\)]*|(http:\/\/[\w\-\.]+[^\"\'\(\)\<\>\[\] ]+)/ig).join("\r\n").replace(/^(src=|href=|url\()[\"\']*|[\"\'\>\) ]*$/igm,"");
 alert(aa);
-
+```
 82、原生JavaScript用正则表达式清除相同的数组(低效率)
-
+```javascript
 Array.prototype.unique=function(){
     return this.reverse().join(",").match(/([^,]+)(?!.*\1)/ig).reverse();
 }
-
+```
 83、原生JavaScript用正则表达式清除相同的数组(高效率)
-
+```javascript
 String.prototype.unique=function(){
     var x=this.split(/[\r\n]+/);
     var y='';
@@ -1102,25 +1129,29 @@ String.prototype.unique=function(){
     }
     return y;
 }
-
+```
 84、原生JavaScript用正则表达式按字母排序，对每行进行数组排序
+```javascript
 function SetSort(){
     var text=K1.value.split(/[\r\n]/).sort().join("\r\n");//顺序
     var test=K1.value.split(/[\r\n]/).sort().reverse().join("\r\n");//反序
     K1.value=K1.value!=text?text:test;
 }
-
+```
 85、原生JavaScript字符串反序
+```javascript
 function IsReverse(text){
     return text.split('').reverse().join('');
 }
-
+```
 86、原生JavaScript用正则表达式清除html代码中的脚本
+```javascript
 function clear_script(){
   K1.value=K1.value.replace(/<script.*?>[\s\S]*?<\/script>|\s+on[a-zA-Z]{3,16}\s?=\s?"[\s\S]*?"|\s+on[a-zA-Z]{3,16}\s?=\s?'[\s\S]*?'|\s+on[a-zA-Z]{3,16}\s?=[^ >]+/ig,"");
 }
-
+```
 87、原生JavaScript动态执行JavaScript脚本
+```javascript
 function javascript(){
     try{
       eval(K1.value);
@@ -1128,9 +1159,9 @@ function javascript(){
         alert(e.message);
     }
 }
-
+```
 88、原生JavaScript动态执行VBScript脚本
-
+```javascript
 function vbscript(){
     try{
         var script=document.getElementById("K1").value;
@@ -1140,9 +1171,9 @@ function vbscript(){
         alert(e.message);
     }
 }
-
+```
 89、原生JavaScript实现金额大写转换函数
-
+```javascript
 function transform(tranvalue) {
   try {
     var i = 1;
@@ -1217,8 +1248,9 @@ function splits(tranvalue) {
   }
   return value;
 }
-
+```
 90、原生JavaScript常用的正则表达式大收集
+
 匹配中文字符的正则表达式： [\u4e00-\u9fa5]
 匹配双字节字符（包括汉字在内）：[^\x00-\xff]
 匹配空行的正则表达式：\n[\s| ]*\r
@@ -1266,6 +1298,7 @@ IP：(\d+)\.(\d+)\.(\d+)\.(\d+)
 帐号（字母开头，允许 5-16 字节，允许字母数字下划线）：^[a-zA-Z][a-zA-Z0-9_]{4,15}$
 中文、英文、数字及下划线：^[\u4e00-\u9fa5_a-zA-Z0-9]+$
 91、原生JavaScript实现窗体改变事件resize的操作（兼容所有的浏览器）
+```javascript
 (function(){
     var fn = function(){
         var w = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth
@@ -1285,14 +1318,15 @@ IP：(\d+)\.(\d+)\.(\d+)\.(\d+)
     }
     fn();
 })();
-
+```
 92、原生JavaScript用正则清除空格分左右
+```javascript
 function ltrim(s){ return s.replace( /^(\s*|　*)/, ""); }
 function rtrim(s){ return s.replace( /(\s*|　*)$/, ""); }
 function trim(s){ return ltrim(rtrim(s));}
-
+```
 93、原生JavaScript判断变量是否空值
-
+```javascript
 /**
  * 判断变量是否空值
  * undefined, null, '', false, 0, [], {} 均返回true，否则返回false
@@ -1312,9 +1346,9 @@ function empty(v){
     }
     return false;
 }
-
+```
 94、原生JavaScript实现base64解码
-
+```javascript
 function base64_decode(data){
     var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
     var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,ac = 0,dec = "",tmp_arr = [];
@@ -1343,8 +1377,9 @@ function base64_decode(data){
     dec = utf8_decode(dec);
     return dec;
 }
-
+```
 95、原生JavaScript实现utf8解码
+```javascript
 function utf8_decode(str_data){
     var tmp_arr = [],i = 0,ac = 0,c1 = 0,c2 = 0,c3 = 0;str_data += '';
     while (i < str_data.length) {
@@ -1365,8 +1400,9 @@ function utf8_decode(str_data){
     }
     return tmp_arr.join('');
 }
-
+```
 96、原生JavaScript获取窗体可见范围的宽与高
+```javascript
 function getViewSize(){
     var de=document.documentElement;
     var db=document.body;
@@ -1374,8 +1410,9 @@ function getViewSize(){
     var viewH=de.clientHeight==0 ?  db.clientHeight : de.clientHeight;
     return Array(viewW ,viewH);
 }
-
+```
 97、原生JavaScript判断IE版本号（既简洁、又向后兼容！）
+```javascript
 var _IE = (function(){
     var v = 3, div = document.createElement('div'), all = div.getElementsByTagName('i');
     while (
@@ -1384,8 +1421,9 @@ var _IE = (function(){
     );
     return v > 4 ? v : false ;
 }());
-
+```
 98、原生JavaScript获取浏览器版本号
+```javascript
 function browserVersion(types) {
     var other = 1;
     for (i in types) {
@@ -1402,8 +1440,9 @@ function browserVersion(types) {
     }
     BROWSER.other = other;
 }
-
+```
 99、原生JavaScript半角转换为全角函数
+```javascript
 function ToDBC(str){
   var result = '';
   for(var i=0; i < str.length; i++){
@@ -1418,8 +1457,9 @@ function ToDBC(str){
   }
  return result;
 }
-
+```
 100、原生JavaScript全角转换为半角函数 
+```javascript
 function ToCDB(str){
   var result = '';
   for(var i=0; i < str.length; i++){
@@ -1434,8 +1474,8 @@ function ToCDB(str){
   }
  return result;
 }
+```
 
-http://www.jq-school.com/
 
 
 
