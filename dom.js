@@ -73,8 +73,10 @@
 		_arr = Array.prototype.slice.call(nodes, 0)
 	} catch(ex) {
 		_arr = new Array();
+        //_arr = [];
 		for (var i=0, len=nodes.length; i<len; i++) {
 			_arr.push(nodes[i]);
+            //arr[i] = nodes[i]; // 这样比push 快
 		}
 	}
 	return _arr;
